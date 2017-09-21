@@ -106,6 +106,6 @@ var control = L.control.layers({}, {
 	'Pericolosità alluvioni: da moderata a molto elevata': periAlluvioneMME,
 	'Pericolosità frane: da moderata a molto elevata': periFranaMME,
 	'Decessi legati al nubifragio del 10 settembre 2017': decessi.addTo(map)
-})
+},{collapsed:false})
 
 control.addTo(map);
