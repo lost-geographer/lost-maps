@@ -15,6 +15,6 @@ var periAlluvioneB = L.tileLayer.wms('http://www.geoservices.isprambiente.it/arc
 
 var control = L.control.layers({}, {
     'Pericolosità Alluvioni: bassa': periAlluvioneB
-})
+},{collapsed:false})
 
 control.addTo(map);
