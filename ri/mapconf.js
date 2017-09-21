@@ -1,5 +1,8 @@
 var map = L.map('map').setView([43.52, 10.331], 13);
 
+map.options.minZoom = 11;
+map.options.maxZoom = 17;
+
 var openTopoMap = L.tileLayer(
 	'http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',{
 		attribution: 'Dati: <a href="https://opentopomap.org/copyright">OpenTopoMap</a>'
