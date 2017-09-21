@@ -34,7 +34,7 @@ var MinAmbSource = L.WMS.Source.extend({
 				tipo = "FRANE";
 				break;
 			default:
-				info = "Nessuno dato idrogeologico selezionato.";
+				info = null;
 				break;
 		}
 
@@ -76,12 +76,12 @@ var MinAmbSource = L.WMS.Source.extend({
 						break;
 				}
 				info = "Pericolosità " + pericolosità + "<br/><span class=\"legenda\">" + tipo + " " + frequenza + "</span>"/*<br>Data pubblicazione: " + aggiornamento*/;
+				this._map.openPopup(info, latlng);
 				break;
 			default:
-				info = "Nessuno dato idrogeologico selezionato.";
+				info = null;
 				break;
 			}
-		this._map.openPopup(info, latlng);
 	}
 });
 
@@ -96,7 +96,7 @@ var MinAmbPeri = new MinAmbSource("http://wms.pcn.minambiente.it/ogc?map=/ms_ogc
 
 var periAlluvioneMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.ALLUVIONE").addTo(map);
 var periFranaMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.FRANA_01").addTo(map);
-var decessi = L.layerGroup();
+var decessi = L.layerGroup().addTo(map);
 
 L.marker([43.517480, 10.340572]).bindPopup('Bechini Martina').addTo(decessi),
 L.marker([43.517466, 10.348805]).bindPopup('Vestuti Roberto').addTo(decessi),
@@ -109,7 +109,7 @@ var control = L.control.layers({
 	'Cliccare sulla mappa per informazioni dettagliate': openTopoMap},{
 	'Pericolosità alluvioni: da moderata a molto elevata': periAlluvioneMME,
 	'Pericolosità frane: da moderata a molto elevata': periFranaMME,
-	'Decessi legati al nubifragio del 10 settembre 2017': decessi.addTo(map)
+	'Decessi legati al nubifragio del 10 settembre 2017': decessi
 },{collapsed:false})
 
 control.addTo(map);
