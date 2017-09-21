@@ -10,7 +10,7 @@ var MinAmbSource = L.WMS.Source.extend({
 	'showFeatureInfo': function(latlng, info){
 		if (!this._map){return;}
 
-/*		aggiornamento = info.split(/'/)[19];
+		/*aggiornamento = info.split(/'/)[19];
 		switch (aggiornamento){
 			case " ":
 				aggiornamento = "sconosciuta";
@@ -92,9 +92,7 @@ var MinAmbPeri = new MinAmbSource("http://wms.pcn.minambiente.it/ogc?map=/ms_ogc
 );
 
 var periAlluvioneMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.ALLUVIONE").addTo(map);
-
 var periFranaMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.FRANA_01").addTo(map);
-
 var decessi = L.layerGroup();
 
 L.marker([43.517480, 10.340572]).bindPopup('Bechini Martina').addTo(decessi),
@@ -109,4 +107,5 @@ var control = L.control.layers({}, {
 	'Pericolosità frane: da moderata a molto elevata': periFranaMME,
 	'Decessi legati al nubifragio del 10 settembre 2017': decessi.addTo(map)
 })
+
 control.addTo(map);
