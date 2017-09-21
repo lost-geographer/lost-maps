@@ -9,73 +9,75 @@ var openTopoMap = L.tileLayer(
 var MinAmbSource = L.WMS.Source.extend({
 	'showFeatureInfo': function(latlng, info){
 		if (!this._map){return;}
+
+/*		aggiornamento = info.split(/'/)[19];
+		switch (aggiornamento){
+			case " ":
+				aggiornamento = "sconosciuta";
+				break;
+			default:
+				aggiornamento = aggiornamento;
+				break;
+		}*/
+
 		tipo = info.split(/'/)[21];
 		switch (tipo){
 			case "ALLUVIONE":
 				legenda = info.split(/'/)[27];
-				switch (legenda){
-					case "MOLTO ELEVATA":
-						info = "Pericolosità molto elevata<br/><span class=\"legenda\">ALLUVIONI MOLTO FREQUENTI</span>";
-						break;
-					case "ELEVATA":
-						info = "Pericolosità elevata<br/><span class=\"legenda\">ALLUVIONI FREQUENTI</span>";
-						break;
-					case "MEDIA":
-						info = "Pericolosità media<br/><span class=\"legenda\">ALLUVIONI FREQUENTI</span>";
-						break;
-					case "MODERATA":
-						info = "Pericolosità moderata<br/><span class=\"legenda\">ALLUVIONI POCO FREQUENTI</span>";
-						break;
-					case "SITO DI ATTENZIONE":
-						info = "Sito di attenzione";
-						break;
-					case "N.D.":
-						info = "Legenda non disponibile";
-						break;
-					case "Altro":
-						info = "Legenda specifica";
-						break;
-					default:
-						info = "Legenda non disponibile";
-						break;
-				}
-				info;
+				tipo = "ALLUVIONI";
 				break;
 			case "FRANA":
 				legenda = info.split(/'/)[25];
-				switch (legenda){
-					case "MOLTO ELEVATA":
-						info = "Pericolosità molto elevata<br/><span class=\"legenda\">FRANE MOLTO FREQUENTI</span>";
-						break;
-					case "ELEVATA":
-						info = "Pericolosità elevata<br/><span class=\"legenda\">FRANE FREQUENTI</span>";
-						break;
-					case "MEDIA":
-						info = "Pericolosità media<br/><span class=\"legenda\">FRANE FREQUENTI</span>";
-						break;
-					case "MODERATA":
-						info = "Pericolosità moderata<br/><span class=\"legenda\">FRANE POCO FREQUENTI</span>";
-						break;
-					case "SITO DI ATTENZIONE":
-						info = "Sito di attenzione";
-						break;
-					case "N.D.":
-						info = "Legenda non disponibile";
-						break;
-					case "Altro":
-						info = "Legenda specifica";
-						break;
-					default:
-						info = "Legenda non disponibile";
-						break;
-				}
-				info;
+				tipo = "FRANE";
 				break;
 			default:
 				info = "Nessuno dato idrogeologico selezionato.";
 				break;
 		}
-		info;
+
+		switch (tipo){
+			case "ALLUVIONI":
+			case "FRANE":
+				switch (legenda){
+					case "MOLTO ELEVATA":
+						pericolosità = "molto elevata";
+						frequenza = "MOLTO FREQUENTI";
+						break;
+					case "ELEVATA":
+						pericolosità = "elevata";
+						frequenza = "FREQUENTI";
+						break;
+					case "MEDIA":
+						pericolosità = "media";
+						frequenza = "FREQUENTI";
+						break;
+					case "MODERATA":
+						pericolosità = "moderata";
+						frequenza = "POCO FREQUENTI";
+						break;
+					case "SITO DI ATTENZIONE":
+						pericolosità = "« sito di attenzione »";
+						frequenza = "FREQUENZA SCONOSCIUTA";
+						break;
+					case "N.D.":
+						pericolosità = "non disponibile";
+						frequenza = "FREQUENZA SCONOSCIUTA";
+						break;
+					case "Altro":
+						pericolosità = "specifica";
+						frequenza = "CONTATTARE AUTORITÀ LOCALI";
+						break;
+					default:
+						pericolosità = "non disponibile";
+						frequenza = "FREQUENZA SCONOSCIUTA";
+						break;
+				}
+				info = "Pericolosità " + pericolosità + "<br/><span class=\"legenda\">" + tipo + " " + frequenza + "</span>"/*<br>Data pubblicazione: " + aggiornamento*/;
+				break;
+			default:
+				info = "Nessuno dato idrogeologico selezionato.";
+				break;
+			}
 		this._map.openPopup(info, latlng);
 	}
 });
