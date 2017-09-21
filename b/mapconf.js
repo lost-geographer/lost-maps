@@ -13,8 +13,9 @@ var periAlluvioneB = L.tileLayer.wms('http://www.geoservices.isprambiente.it/arc
 		attribution: "<a href='http://geoportale.isprambiente.it/'>Istituto Superiore per la Protezione e la Ricerca Ambientale</a>"
 }).addTo(map);
 
-var control = L.control.layers({}, {
-    'Pericolosità Alluvioni: bassa': periAlluvioneB
+var control = L.control.layers({
+	'Cliccare sulla mappa per informazioni dettagliate': openTopoMap},{
+	'Pericolosità Alluvioni: bassa': periAlluvioneB
 },{collapsed:false})
 
 control.addTo(map);
