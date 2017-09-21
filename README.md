@@ -1,2 +1,2 @@
 # lost-maps
-Pericolosità Rischi Idrogeologici
+- ri = Pericolosità Rischi Idrogeologici (da moderata a molto elevata)
