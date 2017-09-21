@@ -102,7 +102,8 @@ L.marker([43.517567, 10.347260]).bindPopup('Tampucci Gianfranco').addTo(decessi)
 L.marker([43.439487, 10.482817]).bindPopup('Nigiotti Matteo').addTo(decessi),
 L.marker([43.528494, 10.311868]).bindPopup('Garzelli Glenda<br>Ramacciotti Filippo<br>Ramacciotti Simone<br>Ramacciotti Roberto').addTo(decessi);
 
-var control = L.control.layers({}, {
+var control = L.control.layers({
+	'Cliccare sulla mappa per informazioni dettagliate': openTopoMap},{
 	'Pericolosità alluvioni: da moderata a molto elevata': periAlluvioneMME,
 	'Pericolosità frane: da moderata a molto elevata': periFranaMME,
 	'Decessi legati al nubifragio del 10 settembre 2017': decessi.addTo(map)
