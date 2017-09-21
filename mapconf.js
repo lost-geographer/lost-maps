@@ -93,26 +93,18 @@ var periAlluvioneMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.ALLUVIONE").addT
 
 var periFranaMME = MinAmbPeri.getLayer("RN.PAI.PERICOLOSITA.FRANA_01").addTo(map);
 
-L.marker([43.517480, 10.340572]).addTo(map)
-.bindPopup('Bechini Martina')
+var decessi = L.layerGroup();
 
-L.marker([43.517466, 10.348805]).addTo(map)
-.bindPopup('Vestuti Roberto')
-
-L.marker([43.514152, 10.332958]).addTo(map)
-.bindPopup('Frattali Raimondo')
-
-L.marker([43.517567, 10.347260]).addTo(map)
-.bindPopup('Tampucci Gianfranco')
-
-L.marker([43.439487, 10.482817]).addTo(map)
-.bindPopup('Nigiotti Matteo')
-
-L.marker([43.528494, 10.311868]).addTo(map)
-.bindPopup('Garzelli Glenda<br>Ramacciotti Filippo<br>Ramacciotti Simone<br>Ramacciotti Roberto')
+L.marker([43.517480, 10.340572]).bindPopup('Bechini Martina').addTo(decessi),
+L.marker([43.517466, 10.348805]).bindPopup('Vestuti Roberto').addTo(decessi),
+L.marker([43.514152, 10.332958]).bindPopup('Frattali Raimondo').addTo(decessi),
+L.marker([43.517567, 10.347260]).bindPopup('Tampucci Gianfranco').addTo(decessi),
+L.marker([43.439487, 10.482817]).bindPopup('Nigiotti Matteo').addTo(decessi),
+L.marker([43.528494, 10.311868]).bindPopup('Garzelli Glenda<br>Ramacciotti Filippo<br>Ramacciotti Simone<br>Ramacciotti Roberto').addTo(decessi);
 
 var control = L.control.layers({}, {
-    'Pericolosità Alluvioni: da moderata a molto elevata': periAlluvioneMME,
-    'Pericolosità Frane: da moderata a molto elevata': periFranaMME
+	'Pericolosità alluvioni: da moderata a molto elevata': periAlluvioneMME,
+	'Pericolosità frane: da moderata a molto elevata': periFranaMME,
+	'Decessi legati al nubifragio del 10 settembre 2017': decessi.addTo(map)
 })
 control.addTo(map);
