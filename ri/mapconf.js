@@ -8,7 +8,7 @@ var openTopoMap = L.tileLayer(
 		attribution: 'Dati: <a href="https://opentopomap.org/copyright">OpenTopoMap</a>'
 	}).addTo(map);
 
-//https://stackoverflow.com/questions/46268753/filter-getfeatureinfo-results-leaflet-wms-plugin
+// Thanks to https://stackoverflow.com/a/46277636
 var MinAmbSource = L.WMS.Source.extend({
 	'showFeatureInfo': function(latlng, info){
 		if (!this._map){return;}
