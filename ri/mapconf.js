@@ -76,12 +76,12 @@ var MinAmbSource = L.WMS.Source.extend({
 						break;
 				}
 				info = "Pericolosità " + pericolosità + "<br/><span class=\"legenda\">" + tipo + " " + frequenza + "</span>"/*<br>Data pubblicazione: " + aggiornamento*/;
-				this._map.openPopup(info, latlng);
 				break;
 			default:
 				info = null;
 				break;
 			}
+			this._map.openPopup(info, latlng);
 	}
 });
 
