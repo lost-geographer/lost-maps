@@ -34,7 +34,7 @@ var MinAmbSource = L.WMS.Source.extend({
 				tipo = "FRANE";
 				break;
 			default:
-				info = null;
+				info = "Nessuno dato idrogeologico selezionato.";
 				break;
 		}
 
@@ -78,7 +78,7 @@ var MinAmbSource = L.WMS.Source.extend({
 				info = "Pericolosità " + pericolosità + "<br/><span class=\"legenda\">" + tipo + " " + frequenza + "</span>"/*<br>Data pubblicazione: " + aggiornamento*/;
 				break;
 			default:
-				info = null;
+				info = "Nessuno dato idrogeologico selezionato.";
 				break;
 			}
 			this._map.openPopup(info, latlng);
